@@ -3,77 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>First Test</title>
-    <meta name="description" content="First Test">
+    <meta name="description" content="Audio Tests">
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
-    <script>AFRAME.registerComponent('collider-check', {
-  dependencies: ['raycaster'],
-  init: function () {
-    this.el.addEventListener('raycaster-intersected', function () {
-      console.log('Player hit something!');
-    });
-  }
-});</script>
   </head>
   <body>
     <a-scene>
       <a-assets>
-        <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
-        <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
-    
-      
+        <video id="sample" muted autoplay loop="true" src="sample2.mp4">
       </a-assets>
-
- 
-      <a-entity 
-        position="2 2 -6"
-        text="width: 6; color: white; value: Electric Guest">
-      </a-entity>
-
-      <a-circle
-       class="c1"
-       material="transparent: true; opacity: 0.1"
-       position="0 2 -6"
-       radius="3">
-       </a-circle>
-       <a-circle
-       class="c1"
-       material="transparent: true;color:red; opacity: 0.1"
-       position="0 2 -6"
-       radius="2">
-       </a-circle>
-
-    
-
-
-
-      <a-entity 
-        position="-6 2 -2"
-        rotation="0 90 0"
-        text="width: 6; color: white; value: Calvin Harris">
-      </a-entity>     
-
-        <a-circle
-       id="c2"
-       material="transparent: true; opacity: 0.1"
-       position="-6 2 0"
-       rotation="0 90 0"
-       radius="3">
-       </a-circle>
-
-<a-entity class="clickable" geometry="primitive: box" position="1 0 0"></a-entity>
-
-
-      <!-- Background sky. -->
-      <a-sky height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048"></a-sky>
-
-      <!-- Ground. -->
-      <a-circle src="#groundTexture" rotation="-90 0 0" radius="32"></a-circle>
-
-     <a-camera collider-check>
-  <a-entity id="ray" cursor raycaster="interval: 100;"></a-entity>
-
+      <a-videosphere src="#sample"></a-videosphere>
+      <a-camera wasd-controls-enabled="false">
+      <a-entity id="ray" cursor raycaster="interval: 250;"></a-entity>
       </a-camera>
-
     </a-scene>
     <script src="bundle.js"></script>
   </body>

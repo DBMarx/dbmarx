@@ -2773,46 +2773,151 @@
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],2:[function(require,module,exports){
-"use strict";
+'use strict';
 
-require("howler");
+require('howler');
 
-console.log("hasdafi");
-var c1 = document.querySelector('.c1');
-var c2 = document.querySelector('#c2');
-var clickable = document.querySelector('.clickable');
-
-c1.addEventListener('raycaster-intersected', function () {
-  song.volume(song.volume() + .33), console.log("Volume Up", song.volume());
-});
-
-c1.addEventListener('raycaster-intersected-cleared', function () {
-  song.volume(song.volume() - .33), console.log("Volume Down", song.volume());
-});
-
-c2.addEventListener('mouseenter', function () {
-  song2.volume(song2.volume() + .33), console.log("Volume Up", song2.volume());
-});
-
-c2.addEventListener('mouseleave', function () {
-  song2.volume(song2.volume() - .33), console.log("Volume Down", song2.volume());
-});
-
-clickable.addEventListener('raycaster-intersected', function () {
-  console.log('Player hit something!');
-});
+var sceneEl = document.querySelector('a-scene');
 
 var song = new Howl({
   src: ['./song.mp3'],
+  loop: true,
   volume: 0.0
 });
 
 var song2 = new Howl({
   src: ['./song2.mp3'],
+  loop: true,
   volume: 0.0
 });
 
+var song3 = new Howl({
+  src: ['./song3.mp3'],
+  loop: true,
+  volume: 0.0
+});
+var song4 = new Howl({
+  src: ['./song4.mp3'],
+  loop: true,
+  volume: 0.0
+});
 song.play();
 song2.play();
+song3.play();
+song4.play();
+
+function createAudioSector(pos, angle, audio, vol) {
+  var color = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'blue';
+
+  var entityEl = document.createElement('a-curvedImage');
+  entityEl.setAttribute('material', { transparent: true, color: '' + color, opacity: 0.1 });
+  entityEl.setAttribute('height', "30");
+  entityEl.setAttribute('theta-length', '' + angle);
+  entityEl.setAttribute('radius', '4');
+  entityEl.setAttribute('rotation', '0 ' + pos + ' 0');
+  entityEl.addEventListener('raycaster-intersected', function () {
+    audio.volume(audio.volume() + .1);
+    console.log(color + ' UP', audio.volume());
+  });
+  entityEl.addEventListener('raycaster-intersected-cleared', function () {
+    audio.fade(audio.volume(), .05, 3000);
+    console.log(color + ' DOWN', audio.volume());
+  });
+  sceneEl.appendChild(entityEl);
+}
+
+createAudioSector(0, 110, song, 1);
+createAudioSector(90, 110, song2, 1, 'red');
+createAudioSector(180, 110, song3, 1, 'yellow');
+createAudioSector(270, 110, song4, 1, 'green');
+
+// Playing with Web Audio API
+
+// (function() {
+//     var context, soundSource, soundBuffer, url = './song.mp3';
+
+//     // Step 1 - Initialise the Audio Context
+//     // There can be only one!
+
+//     function init() {
+//         if (typeof AudioContext !== "undefined") {
+//             context = new AudioContext();
+//         } else if (typeof webkitAudioContext !== "undefined") {
+//             context = new webkitAudioContext();
+//         } else {
+//             throw new Error('AudioContext not supported. :(');
+//         }
+//     }
+
+//     // Step 2: Load our Sound using XHR
+
+//     function startSound() {
+//         // Note: this loads asynchronously
+//         var request = new XMLHttpRequest();
+//         request.open("GET", url, true);
+//         request.responseType = "arraybuffer";
+
+//         // Our asynchronous callback
+//         request.onload = function() {
+//             var audioData = request.response;
+
+//             audioGraph(audioData);
+
+
+//         };
+
+//         request.send();
+//     }
+
+//     // Finally: tell the source when to start
+
+//     function playSound() {
+//         // play the source now
+//         soundSource.start(context.currentTime);
+//     }
+
+//     function stopSound() {
+//         // stop the source now
+//         soundSource.stop(context.currentTime);
+//     }
+
+//     // Events for the play/stop bottons
+//     // document.querySelector('#play').addEventListener('mouseenter', startSound);
+//     // document.querySelector('#stop').addEventListener('mouseenter', stopSound);
+
+//     function audioGraph(audioData) {
+//         var panner;
+
+//         // Same setup as before
+//         soundSource = context.createBufferSource();
+//         context.decodeAudioData(audioData, function(soundBuffer){
+//             soundSource.buffer = soundBuffer;
+//             panner = context.createPanner();
+//             panner.panningModel = 'HRTF';
+//             panner.distanceModel = 'inverse';
+//             panner.refDistance = 1;
+//             panner.maxDistance = 10000;
+//             panner.rolloffFactor = 1;
+//             panner.coneInnerAngle = 360;
+//             panner.coneOuterAngle = 0;
+//             panner.coneOuterGain = 0;
+//             panner.setPosition(-20, 0, 0);
+//             soundSource.connect(panner);
+//             panner.connect(context.destination);
+
+//             // Each context has a single 'Listener' 
+//             context.listener.setPosition(0, 0, 0);
+
+
+//             // Finally
+//             playSound(soundSource);
+//         });
+//     }
+
+
+//     init();
+
+
+// }());
 
 },{"howler":1}]},{},[2]);
