@@ -4,12 +4,13 @@
     <meta charset="utf-8">
     <title>First Test</title>
     <meta name="description" content="Audio Tests">
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
   </head>
   <body>
     <a-scene>
       <a-assets>
-        <video id="sample" muted autoplay loop="true" src="sample2.mp4">
+        <video id="sample" webkit-playsinline muted autoplay loop="true" src="sample2.mp4">
       </a-assets>
       <a-videosphere src="#sample"></a-videosphere>
       <a-camera wasd-controls-enabled="false">
