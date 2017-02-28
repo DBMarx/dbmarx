@@ -2778,20 +2778,21 @@
 require('howler');
 
 var sceneEl = document.querySelector('a-scene');
+
 var song = new Howl({
-  src: ['http://d1hmxm9ek28kti.cloudfront.net/guys.mp3'],
+  src: ['./guys.mp3'],
   loop: true,
   volume: 0.0
 });
 
 var song2 = new Howl({
-  src: ['http://d1hmxm9ek28kti.cloudfront.net/secondTime.mp3'],
+  src: ['./secondTime.mp3'],
   loop: true,
   volume: 0.0
 });
 
 var song3 = new Howl({
-  src: ['http://d1hmxm9ek28kti.cloudfront.net/guitar.mp3'],
+  src: ['./guitar.mp3'],
   loop: true,
   volume: 0.0
 });
@@ -2804,25 +2805,24 @@ function createAudioSector(pos, angle, audio, vol) {
   var color = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'blue';
 
   var entityEl = document.createElement('a-curvedImage');
-  entityEl.setAttribute('material', { transparent: true, color: '' + color, opacity: 0.1 });
+  entityEl.setAttribute('material', { transparent: true, color: '' + color, opacity: 0.0 });
   entityEl.setAttribute('height', "30");
   entityEl.setAttribute('theta-length', '' + angle);
   entityEl.setAttribute('radius', '4');
   entityEl.setAttribute('rotation', '0 ' + pos + ' 0');
   entityEl.addEventListener('raycaster-intersected', function () {
-    if (audio.volume() > .9) return;
     audio.volume(audio.volume() + .1);
-    console.log(color + ' UP', audio.volume());
+    // console.log(`${color} UP`, audio.volume())
   });
   entityEl.addEventListener('raycaster-intersected-cleared', function () {
     audio.fade(audio.volume(), .05, 3000);
-    console.log(color + ' DOWN', audio.volume());
+    // console.log(`${color} DOWN`, audio.volume())
   });
   sceneEl.appendChild(entityEl);
 }
 
-createAudioSector(-50, 130, song, 1, 'blue');
-createAudioSector(90, 130, song2, 1, 'red');
-createAudioSector(190, 130, song3, 1, 'yellow');
+createAudioSector(-30, 90, song, 1, 'blue');
+createAudioSector(120, 110, song2, 1, 'red');
+createAudioSector(220, 120, song3, 1, 'yellow');
 
 },{"howler":1}]},{},[2]);
