@@ -2778,7 +2778,6 @@
 require('howler');
 
 var sceneEl = document.querySelector('a-scene');
-
 var song = new Howl({
   src: ['http://d1hmxm9ek28kti.cloudfront.net/guys.mp3'],
   loop: true,
