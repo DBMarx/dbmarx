@@ -3,20 +3,43 @@
   <head>
     <meta charset="utf-8">
     <title>First Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Audio Tests">
     <meta name="apple-mobile-web-app-capable" content="yes"> 
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
   </head>
   <body>
+    <h2 id="behavior" style="display:none"></h2>
     <a-scene>
       <a-assets>
-        <video src="sample2.mp4" autoplay loop muted playsinline id="sample"></video>
+        <video src="sample2.mov" autoplay loop muted playsinline id="sample"></video>
       </a-assets>
       <a-videosphere src="#sample"></a-videosphere>
       <a-camera wasd-controls-enabled="false">
       <a-entity id="ray" cursor raycaster="interval: 250;"></a-entity>
       </a-camera>
     </a-scene>
+		<script src="./iphone-inline-video.js"></script>
+
+<script>
+			var video = document.querySelector('video');
+      var vSphere = document.querySelector('a-videosphere');
+			var behavior = document.querySelector('#behavior');
+			switch(location.search) {
+				case '?enabled=false':
+					behavior.textContent = 'Module disabled everywhere.';
+					break;
+				case '?enabled=true':
+					window.enableInlineVideo(video, {everywhere: true});
+					behavior.textContent = 'Module enabled everywhere (whether it’s necessary or not)';
+					break;
+				default:
+				case '?enabled=auto':
+					window.enableInlineVideo(video);
+          window.enableInlineVideo(vSphere);
+					break;
+			}
+		</script>
     <script src="bundle.js"></script>
   </body>
 </html>
