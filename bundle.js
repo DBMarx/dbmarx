@@ -2805,7 +2805,7 @@ function createAudioSector(pos, angle, audio, vol) {
   var color = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'blue';
 
   var entityEl = document.createElement('a-curvedImage');
-  entityEl.setAttribute('material', { transparent: true, color: '' + color, opacity: 0.0 });
+  entityEl.setAttribute('material', { transparent: true, color: '' + color, opacity: 0.1 });
   entityEl.setAttribute('height', "30");
   entityEl.setAttribute('theta-length', '' + angle);
   entityEl.setAttribute('radius', '4');
@@ -2824,5 +2824,24 @@ function createAudioSector(pos, angle, audio, vol) {
 createAudioSector(-30, 90, song, 1, 'blue');
 createAudioSector(120, 110, song2, 1, 'red');
 createAudioSector(220, 120, song3, 1, 'yellow');
+
+/* Can this go here?
+var video = document.querySelector('video');
+var vSphere = document.querySelector('a-videosphere');
+var behavior = document.querySelector('#behavior');
+switch(location.search) {
+  case '?enabled=false':
+    behavior.textContent = 'Module disabled everywhere.';
+    break;
+  case '?enabled=true':
+    window.enableInlineVideo(video, {everywhere: true});
+    behavior.textContent = 'Module enabled everywhere (whether it’s necessary or not)';
+    break;
+  default:
+  case '?enabled=auto':
+    window.enableInlineVideo(video);
+    window.enableInlineVideo(vSphere);
+    break; 
+}*/
 
 },{"howler":1}]},{},[2]);
