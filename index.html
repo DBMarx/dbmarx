@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>David v1.2</title>
+    <title>David v1.3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Audio Tests">
     <meta name="apple-mobile-web-app-capable" content="yes"> 
@@ -16,7 +16,8 @@
     <h2 id="behavior" style="display:none"></h2>
     <a-scene>
       <a-assets timeout="10000">
-        <video src="./TRIBAL-old.mp4" autoplay loop="true" id="sample"/>
+          <video autoplay="true" loop="true" id="sample" type="video/mp4" src="./TRIBAL-old.mp4">
+        <!-- <video src="./TRIBAL-old.mp4" autoplay loop="true" id="sample"/>-->
       </a-assets>
       <a-videosphere src="#sample"></a-videosphere>
       <a-camera wasd-controls-enabled="false">
