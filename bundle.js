@@ -2777,7 +2777,7 @@
 
 require('howler');
 
-
+/*
 const videoElem = document.getElementById("video");
 //window.addEventListener("click", handlePlayButton, true);
 
@@ -2792,7 +2792,7 @@ async function playVideo() {
 
 function handlePlayButton() {
   playVideo();
-}
+}*/
 
 
 

@@ -1,31 +1,65 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Open Mikers v1.6</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Audio Tests">
-    <meta name="apple-mobile-web-app-capable" content="yes"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Audio Tests" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
-  </head>
-  
 
+    <!-- Use components defined in separate files. -->
+    <script src="play-on-window-click.js"></script>
+    <script src="play-on-vrdisplayactivate-or-enter-vr.js"></script>
+    <script src="hide-once-playing.js"></script>
+  </head>
 
   <body>
-    
     <a-scene>
-      <a-assets >
-         <!-- why does muted break the autoplay?-->
-          <video autoplay playsinline controls id="video" type="video/mp4" src="./TRIBAL.mp4"></video>
-      </a-assets>
-
-      <a-videosphere src="#video"></a-videosphere>
+      <a-videosphere
+        rotation="0 180 0"
+        src="#video"
+        play-on-window-click
+        play-on-vrdisplayactivate-or-enter-vr
+      >
+      </a-videosphere>
       <a-camera wasd-controls-enabled="false">
-      <a-entity id="ray" cursor raycaster="interval: 250;"></a-entity>
+        <!-- Text element for display messaging.  Hide once video is playing. -->
+        <a-entity
+          id="msg"
+          position="0 -0.3 -1.5"
+          text="align:center; 
+         width:3;
+         wrapCount:100;
+         color:red;
+         value:Click window to make the video play, if needed."
+          hide-once-playing="#video"
+        >
+        </a-entity>
+        <a-entity id="ray" cursor raycaster="interval: 250;"></a-entity>
       </a-camera>
+
+      <!-- Wait for the video to load. -->
+      <a-assets>
+        <!-- Single source video. -->
+        <video
+          id="video"
+          style="display:none"
+          autoplay
+          loop
+          crossorigin="anonymous"
+          playsinline
+          webkit-playsinline
+        >
+          <!-- MP4 video source. -->
+          <source
+            type="video/mp4"
+            src="./TRIBAL.mp4"
+          />
+        </video>
+      </a-assets>
     </a-scene>
-
-
     <script src="bundle.js"></script>
+
   </body>
 </html>
