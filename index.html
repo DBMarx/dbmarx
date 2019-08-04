@@ -7,16 +7,17 @@
     <meta name="description" content="Audio Tests">
     <meta name="apple-mobile-web-app-capable" content="yes"> 
     <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
-    <script src="./iphone-inline-video.js"></script>
-
-
   </head>
+  
 
 
   <body id='bod'>
+
+      <video autoplay playsinline muted controls id="video" type="video/mp4" src="./TRIBAL-old.mp4"></video>
+<!--
     <a-scene>
       <a-assets >
-          <video autoplay controls id="video" type="video/mp4" src="./TRIBAL-old.mp4"></video>
+          <video id="video" type="video/mp4" src="./TRIBAL-old.mp4"></video>
       </a-assets>
 
       <a-videosphere src="#video"></a-videosphere>
@@ -24,6 +25,8 @@
       <a-entity id="ray" cursor raycaster="interval: 250;"></a-entity>
       </a-camera>
     </a-scene>
+
+  -->
     <script src="bundle.js"></script>
   </body>
 </html>
