@@ -2781,7 +2781,7 @@ require('howler');
 const videoElem = document.getElementById("video");
 const bod = document.getElementById("bod");
 
-bod.addEventListener("click", handlePlayButton, {capture:true});
+//window.addEventListener("click", handlePlayButton, true);
 
 async function playVideo() {
   try {
@@ -2793,12 +2793,7 @@ async function playVideo() {
 
 function handlePlayButton() {
   console.log("CLICKED MY BODY");
-
-  if (videoElem.paused) {
-    playVideo();
-  } else {
-    videoElem.pause();
-  }
+  playVideo();
 }
 
 
@@ -2842,7 +2837,7 @@ function createAudioSector(pos, angle, audio, vol) {
   });
   entityEl.addEventListener('raycaster-intersected-cleared', function () {
     audio.fade(audio.volume(), .05, 3000);
-    // console.log(`${color} DOWN`, audio.volume())
+      // console.log(`${color} DOWN`, audio.volume())
   });
   sceneEl.appendChild(entityEl);
 }
