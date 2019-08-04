@@ -2794,7 +2794,7 @@ var song2 = new Howl({
 var song3 = new Howl({
   src: ['./guitar.mp3'],
   loop: true,
-  volume: 0.0
+  volume: 0.05
 });
 
 song.play();
@@ -2805,18 +2805,19 @@ function createAudioSector(pos, angle, audio, vol) {
   var color = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'blue';
 
   var entityEl = document.createElement('a-curvedImage');
-  entityEl.setAttribute('material', { transparent: true, color: '' + color, opacity: 0.0 });
+  entityEl.setAttribute('material', { transparent: true, color: '' + color, opacity: 0.1 });
   entityEl.setAttribute('height', "30");
   entityEl.setAttribute('theta-length', '' + angle);
   entityEl.setAttribute('radius', '4');
   entityEl.setAttribute('rotation', '0 ' + pos + ' 0');
   entityEl.addEventListener('raycaster-intersected', function () {
-    audio.volume(audio.volume() + .2);
-    // console.log(`${color} UP`, audio.volume())
+    //audio.volume(audio.volume() + .1);
+    audio.fade(audio.volume(), .1, 1000);
+    console.log(`${color} UP`, audio.volume())
   });
   entityEl.addEventListener('raycaster-intersected-cleared', function () {
-    audio.fade(audio.volume(), .05, 3000);
-      // console.log(`${color} DOWN`, audio.volume())
+    audio.fade(audio.volume(), .01, 2000);
+    console.log(`${color} DOWN`, audio.volume())
   });
   sceneEl.appendChild(entityEl);
 }
