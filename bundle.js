@@ -2777,11 +2777,11 @@
 
 require('howler');
 
-/*
+
 const videoElem = document.getElementById("video");
 const bod = document.getElementById("bod");
 
-bod.addEventListener("click", handlePlayButton, false);
+bod.addEventListener("click", handlePlayButton, {capture:true});
 
 async function playVideo() {
   try {
@@ -2792,6 +2792,8 @@ async function playVideo() {
 }
 
 function handlePlayButton() {
+  console.log("CLICKED MY BODY");
+
   if (videoElem.paused) {
     playVideo();
   } else {
@@ -2799,7 +2801,7 @@ function handlePlayButton() {
   }
 }
 
-*/
+
 
 var sceneEl = document.querySelector('a-scene');
 
