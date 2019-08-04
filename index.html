@@ -16,50 +16,19 @@
 
   <body>
     <a-scene>
-      <a-videosphere
-        rotation="0 180 0"
-        src="#video"
-        play-on-window-click
-        play-on-vrdisplayactivate-or-enter-vr
-      >
-      </a-videosphere>
+      <a-videosphere src="#video" play-on-window-click play-on-vrdisplayactivate-or-enter-vr></a-videosphere>
       <a-camera wasd-controls-enabled="false">
         <!-- Text element for display messaging.  Hide once video is playing. -->
-        <a-entity
-          id="msg"
-          position="0 -0.3 -1.5"
-          text="align:center; 
-         width:3;
-         wrapCount:100;
-         color:red;
-         value:Click window to make the video play, if needed."
-          hide-once-playing="#video"
-        >
-        </a-entity>
+        <a-entity id="msg" position="0 -0.3 -1.5" text="align:center; width:3; wrapCount:100; color:black; value:" hide-once-playing="#video"></a-entity>
         <a-entity id="ray" cursor raycaster="interval: 250;"></a-entity>
       </a-camera>
-
       <!-- Wait for the video to load. -->
       <a-assets>
-        <!-- Single source video. -->
-        <video
-          id="video"
-          style="display:none"
-          autoplay
-          loop
-          crossorigin="anonymous"
-          playsinline
-          webkit-playsinline
-        >
-          <!-- MP4 video source. -->
-          <source
-            type="video/mp4"
-            src="./TRIBAL.mp4"
-          />
+        <video id="video" style="display:none" autoplay loop crossorigin="anonymous" playsinline webkit-playsinline>
+          <source type="video/mp4" src="./TRIBAL.mp4"/>
         </video>
       </a-assets>
     </a-scene>
     <script src="bundle.js"></script>
-
   </body>
 </html>

@@ -2777,25 +2777,6 @@
 
 require('howler');
 
-/*
-const videoElem = document.getElementById("video");
-//window.addEventListener("click", handlePlayButton, true);
-
-async function playVideo() {
-  try {
-    await videoElem.play();
-    console.log("Re-fired Play");
-  } catch(err) {
-    console.log({err});
-  }
-}
-
-function handlePlayButton() {
-  playVideo();
-}*/
-
-
-
 var sceneEl = document.querySelector('a-scene');
 
 var song = new Howl({
