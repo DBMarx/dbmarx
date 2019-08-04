@@ -2779,20 +2779,18 @@ require('howler');
 
 
 const videoElem = document.getElementById("video");
-const bod = document.getElementById("bod");
-
 //window.addEventListener("click", handlePlayButton, true);
 
 async function playVideo() {
   try {
     await videoElem.play();
+    console.log("Re-fired Play");
   } catch(err) {
     console.log({err});
   }
 }
 
 function handlePlayButton() {
-  console.log("CLICKED MY BODY");
   playVideo();
 }
 
@@ -2826,7 +2824,7 @@ function createAudioSector(pos, angle, audio, vol) {
   var color = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'blue';
 
   var entityEl = document.createElement('a-curvedImage');
-  entityEl.setAttribute('material', { transparent: true, color: '' + color, opacity: 0.1 });
+  entityEl.setAttribute('material', { transparent: true, color: '' + color, opacity: 0.0 });
   entityEl.setAttribute('height', "30");
   entityEl.setAttribute('theta-length', '' + angle);
   entityEl.setAttribute('radius', '4');

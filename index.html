@@ -11,13 +11,12 @@
   
 
 
-  <body id='bod'>
-
-      <video autoplay playsinline muted controls id="video" type="video/mp4" src="./TRIBAL-old.mp4"></video>
-<!--
+  <body>
+    
     <a-scene>
       <a-assets >
-          <video id="video" type="video/mp4" src="./TRIBAL-old.mp4"></video>
+         <!-- why does muted break the autoplay?-->
+          <video autoplay playsinline controls id="video" type="video/mp4" src="./TRIBAL.mp4"></video>
       </a-assets>
 
       <a-videosphere src="#video"></a-videosphere>
@@ -26,7 +25,7 @@
       </a-camera>
     </a-scene>
 
-  -->
+
     <script src="bundle.js"></script>
   </body>
 </html>
