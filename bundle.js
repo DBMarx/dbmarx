@@ -2778,21 +2778,26 @@
 require('howler');
 
 
+const videoElem = document.getElementById("video");
+const bod = document.getElementById("bod");
 
-var playPromise = video.play();
+bod.addEventListener("click", handlePlayButton, false);
+playVideo();
 
-if (playPromise !== undefined) {
-  playPromise.then(_ => {
-    // Automatic playback started!
-    // Show playing UI.
-    console.log("autoplayed");
-  })
-  .catch(error => {
-    // Auto-play was prevented
-    // Show paused UI.
-  console.log("erred");
+async function playVideo() {
+  try {
+    await videoElem.play();
+  } catch(err) {
+    console.log({err});
+  }
+}
 
-  });
+function handlePlayButton() {
+  if (videoElem.paused) {
+    playVideo();
+  } else {
+    videoElem.pause();
+  }
 }
 
 var sceneEl = document.querySelector('a-scene');
