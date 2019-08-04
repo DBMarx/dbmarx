@@ -2782,7 +2782,6 @@ const videoElem = document.getElementById("video");
 const bod = document.getElementById("bod");
 
 bod.addEventListener("click", handlePlayButton, false);
-playVideo();
 
 async function playVideo() {
   try {
@@ -2847,14 +2846,6 @@ function createAudioSector(pos, angle, audio, vol) {
 createAudioSector(-30, 90, song, 1, 'blue');
 createAudioSector(120, 110, song2, 1, 'red');
 createAudioSector(220, 120, song3, 1, 'yellow');
-
-
-
-
-video.addEventListener('canplay', (event) => {
-  console.log('Video can start, but not sure it will play through.');
-  video.play();
-});
 
 
 
