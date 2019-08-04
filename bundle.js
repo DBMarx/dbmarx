@@ -2811,7 +2811,7 @@ function createAudioSector(pos, angle, audio, vol) {
   entityEl.setAttribute('radius', '4');
   entityEl.setAttribute('rotation', '0 ' + pos + ' 0');
   entityEl.addEventListener('raycaster-intersected', function () {
-    audio.volume(audio.volume() + .1);
+    audio.volume(audio.volume() + .2);
     // console.log(`${color} UP`, audio.volume())
   });
   entityEl.addEventListener('raycaster-intersected-cleared', function () {
