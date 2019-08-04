@@ -2777,7 +2777,7 @@
 
 require('howler');
 
-
+/*
 const videoElem = document.getElementById("video");
 const bod = document.getElementById("bod");
 
@@ -2798,6 +2798,8 @@ function handlePlayButton() {
     videoElem.pause();
   }
 }
+
+*/
 
 var sceneEl = document.querySelector('a-scene');
 
@@ -2849,22 +2851,6 @@ createAudioSector(220, 120, song3, 1, 'yellow');
 
 
 
-var vSphere = document.querySelector('a-videosphere');
-var behavior = document.querySelector('#behavior');
-switch(location.search) {
-  case '?enabled=false':
-    behavior.textContent = 'Module disabled everywhere.';
-    break;
-  case '?enabled=true':
-    window.enableInlineVideo(video, {everywhere: true});
-    behavior.textContent = 'Module enabled everywhere (whether it’s necessary or not)';
-    break;
-  default:
-  case '?enabled=auto':
-    window.enableInlineVideo(video);
-    window.enableInlineVideo(vSphere);
-    break; 
-}
 
 },{"howler":1}]},{},[2]);
 
