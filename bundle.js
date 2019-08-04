@@ -2777,6 +2777,24 @@
 
 require('howler');
 
+
+
+var playPromise = video.play();
+
+if (playPromise !== undefined) {
+  playPromise.then(_ => {
+    // Automatic playback started!
+    // Show playing UI.
+    console.log("autoplayed");
+  })
+  .catch(error => {
+    // Auto-play was prevented
+    // Show paused UI.
+  console.log("erred");
+
+  });
+}
+
 var sceneEl = document.querySelector('a-scene');
 
 var song = new Howl({
@@ -2827,10 +2845,10 @@ createAudioSector(220, 120, song3, 1, 'yellow');
 
 
 
-const video = document.querySelector('video');
 
 video.addEventListener('canplay', (event) => {
   console.log('Video can start, but not sure it will play through.');
+  video.play();
 });
 
 
