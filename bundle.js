@@ -2826,7 +2826,15 @@ createAudioSector(120, 110, song2, 1, 'red');
 createAudioSector(220, 120, song3, 1, 'yellow');
 
 
-var video = document.querySelector('video');
+
+const video = document.querySelector('video');
+
+video.addEventListener('canplay', (event) => {
+  console.log('Video can start, but not sure it will play through.');
+});
+
+
+
 var vSphere = document.querySelector('a-videosphere');
 var behavior = document.querySelector('#behavior');
 switch(location.search) {
